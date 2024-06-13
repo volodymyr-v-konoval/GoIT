@@ -21,8 +21,11 @@ def get_numbers_ticket(min: int, max:int, quantity:int)-> list:
     """
     if min > 0 and max <= 1000:
         sequence = range(min, max+1)
-        sample = random.sample(sequence, quantity)
-        return sorted(sample)
+        try:
+            sample = random.sample(sequence, quantity)
+            return sorted(sample)
+        except ValueError:
+            print('Quantity is out of range! Please enter correct quantity!')
     else:
         return []
 
@@ -54,7 +57,7 @@ if __name__ == '__main__':
 
     #test 2
     print('test2')
-    lottery_numbers = get_numbers_ticket(1, 49, 6)
+    lottery_numbers = get_numbers_ticket(1, 10, 100)
     print('Your lottery numbers: ', lottery_numbers)
 
     #test 3
